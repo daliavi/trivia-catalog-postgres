@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block head %}
+
+{% endblock %}
+
+{% block title %}New Question{% endblock %}
+
+{% block content %}
+
+<div class="container">
+<h4>Question detail</h4>
+
+<div class="card_questions">
+
+<form action="{{url_for('new_question')}}" method = 'post'>
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+    <p>Question:</p>
+    <input type = 'text' size = '100' name ='question'>
+    <p>Correct Answer:</p>
+    <input type = 'text' size = '30' name ='correct_answer'>
+    <p>Alternative Answer:</p>
+    <input type = 'text' size = '30' name ='alt_answer_1'>
+    <p>Alternative Answer:</p>
+    <input type = 'text' size = '30' name ='alt_answer_2'>
+    <p>Alternative Answer:</p>
+    <input type = 'text' size = '30' name ='alt_answer_3'>
+    <p>Categories:</p>
+    <select multiple name="categories">
+        {% for i in categories %}
+            <option value={{i.id}}>{{i.name}}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <br>
+    <input type = 'submit' value = 'Create'>
+</form>
+</div>
+</div>
+
+{% endblock %}
